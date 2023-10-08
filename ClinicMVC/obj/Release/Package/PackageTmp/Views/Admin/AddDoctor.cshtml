@@ -1,0 +1,91 @@
+﻿@model ClinicMVC.Models.UserDoctor
+
+@{
+    ViewBag.Title = "AddDoctor";
+   
+}
+
+
+<link rel="stylesheet" href="~/css/AdminAddDoctor.css"/>
+<script type="text/javascript" src="~/js/Captcha.js"></script>
+
+
+<div class="container">
+    <div class="bg">
+        <form method="post" action="/Admin/AddDoctor">
+            <fieldset>
+                <legend>Add Doctor:</legend>
+                <div class="form-row justify-content-center">
+                    <div class="form-group w-50">
+                        <label for="staticName">Name</label>
+                        @Html.TextBoxFor(ud => ud.users.Name, new { type = "text", @class = "form-control", placeholder = "Enter Name", required = "required", id = "patientName" })
+                    </div>
+                    <div class="form-group w-50">
+                        <label for="exampleInputPrice">Phone</label>
+                        @Html.TextBoxFor(ud => ud.users.Phone, new { type = "number", @class = "form-control", placeholder = "Enter Phone", pattern = "{0-9}[10]", required = "required", id = "patientPhone" })
+                    </div>
+                    <div class="form-group w-50">
+                        <label for="exampleInputStock">Address</label>
+                        @Html.TextBoxFor(ud => ud.users.Address, new { type = "text", @class = "form-control", placeholder = "Enter Address", required = "required", id = "patientAddress" })
+                    </div>
+                    <div class="form-group w-50">
+                        <label for="exampleInputTax">DOB</label>
+                        @Html.TextBoxFor(ud => ud.users.DOB, new { type = "date", @class = "form-control", placeholder = "Enter DOB", required = "required", id = "patientDOB" })
+                    </div>
+                    <div class="form-group w-50">
+                        <fieldset class="form-group">
+                            <label>Gender</label>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    @Html.RadioButtonFor(ud => ud.users.Gender, "Male", new { @class = "form-check-input" })
+                                    Male
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    @Html.RadioButtonFor(ud => ud.users.Gender, "Female", new { @class = "form-check-input" })
+                                    Female
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    @Html.RadioButtonFor(ud => ud.users.Gender, "Others", new { @class = "form-check-input" })
+                                    Others
+                                </label>
+                            </div>
+                        </fieldset>
+
+                    </div>
+                    <div class="form-group w-50">
+                        <label for="exampleInputTax">Email</label>
+                        @Html.TextBoxFor(ud => ud.users.Email, new { type = "email", @class = "form-control", placeholder = "Enter Email", required = "required", id = "patientEmail" })
+                    </div>
+                    <div class="form-group w-50">
+                        <label for="exampleInputTax">Password</label>
+                        @Html.TextBoxFor(ud => ud.users.Password, new { type = "password", @class = "form-control", placeholder = "Enter Password", required = "required", id = "patientPassword" })
+                    </div>
+                    <div class="form-group w-50">
+                        <label for="exampleInputTax">Is Available</label>
+                        @Html.DropDownListFor(ud => ud.doctors.IsAavailable, new SelectList(new List<Object> {
+                     new { Id = true, Value="Yes" },
+                     new { Id = false, Value="No" } }, "Id", "Value"), new { @class = "form-control" })
+                    </div>
+                    <div class="form-group w-50">
+                        <label for="exampleInputTax">Specialization</label>
+                        @Html.DropDownListFor(ud => ud.doctors.SpecializationId, new SelectList(ViewBag.Specialization, "SpecializationId", "SpecializationName"), new { @class = "form-control" })
+
+                    </div>
+                    <div class="form-group w-50">
+                        <label for="exampleInputTax">Timings</label>
+                        @Html.TextBoxFor(ud => ud.doctors.Timings, new { type = "text", @class = "form-control", placeholder = "Enter Timing", required = "required" })
+                    </div>
+                    <div class="form-group ">
+                        <button type="submit" class="btn btn-success" onclick="return validateMobileNumber() && validatePassword() && validateEmail();">Submit</button>
+                    </div>
+                </div>
+            </fieldset>
+            </form>
+    </div>
+</div>
+
+

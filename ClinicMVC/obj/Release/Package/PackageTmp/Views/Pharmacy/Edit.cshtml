@@ -1,0 +1,63 @@
+﻿@using DataProvider;
+@model Medicine
+@{
+    ViewBag.Title = "Edit";
+   
+}
+
+<style>
+    fieldset {
+        background-color: aquamarine;
+        border-radius: 5px;
+        padding: 20px;
+    }
+    .container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        margin-right: 50%;
+        margin-top: 10px;
+    }
+    label{
+        font-weight:bold;
+    }
+</style>
+<div class="container">
+    <form method="post" action="/Pharmacy/Edit">
+        <fieldset>
+            
+            <legend>Edit Medicine (@Model.MedicineId):</legend>
+            @Html.HiddenFor(medi => medi.MedicineId)
+            <div class="form-row justify-content-center">
+                <div class="form-group  w-50">
+                    <label for="exampleInputPrice">Name</label>
+                    <input type="text" readonly="" class="form-control-plaintext" value="@Model.Name">
+                </div>
+                <div class="form-group w-50">
+                    <label for="exampleInputPrice">Price</label>
+                    @Html.TextBoxFor(medi => medi.Price, new { type = "number", @class = "form-control", placeholder = "Enter Price" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="exampleInputStock">Stock</label>
+                    @Html.TextBoxFor(medi => medi.Stock, new { type = "number", @class = "form-control", placeholder = "Enter Stock" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="exampleInputTax">Tax</label>
+                    @Html.TextBoxFor(medi => medi.Tax, new { type = "number", @class = "form-control", placeholder = "Enter Tax" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="exampleIsAvailable">IsAvailable</label>
+                    @Html.DropDownListFor(medi => medi.IsAvailable, new SelectList(new List<Object> {
+                new { Id = true, Value="Yes" },
+                new { Id = false, Value="No" } }, "Id", "Value"), new { @class = "form-control" })
+                </div>
+                <div class="form-group w-100 text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+

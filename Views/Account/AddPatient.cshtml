@@ -1,0 +1,94 @@
+﻿
+@model DataProvider.User
+
+@{
+    ViewBag.Title = "AddPatient";
+}
+
+<style>
+    button {
+        margin-top: 10px;
+        margin-right: 50%;
+    }
+
+    form {
+        background-color: aquamarine;
+    }
+
+    /* Other form styling */
+    legend {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    label {
+        font-weight: bold;
+    }
+</style>
+<br />
+<script type="text/javascript" src="~/js/Captcha.js"></script>
+<div class="container">
+    <form method="post" action="/Account/AddPatient" class="login-form" style="padding-left: 20px;">
+        <fieldset>
+            <legend>Register</legend>
+            <div class="form-row justify-content-center">
+                <div class="form-group w-50">
+                    <label for="patientName">User Name</label>
+                    @Html.TextBoxFor(app => app.Name, new { type = "text", @class = "form-control", maxlength = "50", placeholder = "Enter Patient Name", required = "required", id = "patientName" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientPhone">Mobile Number</label>
+                    @Html.TextBoxFor(app => app.Phone, new { type = "number", @class = "form-control", pattern = "{0-9}[10]", placeholder = "Enter Patient Phone", required = "required", id = "patientPhone" })
+                </div>
+
+                <div class="form-group w-50">
+                    <label for="patientDOB">Date of Birth</label>
+                    @Html.TextBoxFor(app => app.DOB, new { type = "date", @class = "form-control", placeholder = "Enter Patient DOB", required = "required", id = "patientDOB" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientAddress">Address</label>
+                    @Html.TextAreaFor(app => app.Address, new { type = "text", @class = "form-control", placeholder = "Enter Patient Address", required = "required", maxlength = "100", rows = "1", id = "patientAddress" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientEmail">Email</label>
+                    @Html.TextBoxFor(app => app.Email, new { type = "email", @class = "form-control", placeholder = "Enter Patient Email", required = "required", id = "patientEmail" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientPassword">Password</label>
+                    @Html.TextBoxFor(app => app.Password, new { type = "password", @class = "form-control", placeholder = "Enter Patient Password", required = "required", id = "patientPassword" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientGender"> Gender</label>
+                    @Html.DropDownListFor(app => app.Gender, new SelectList(new List<Object> {
+                new {  Value="Select Gender" },
+                new {  Value="Male" },
+                new {  Value="Female" },
+                new { Value="Others"} }, "Value", "Value", "Value"), new { @class = "form-control", id = "patientGender" })
+                </div>
+                @Html.HiddenFor(usr => usr.IsActive, new { Value = "true" })
+                @Html.HiddenFor(usr => usr.RoleId, new { Value = "3" })
+
+                <div>
+
+                    <label>Enter Captcha</label>
+                    <br />
+                    <input type="hidden" id="captcha-result" />
+                    <label id="captcha-question" class="mt-2"></label>
+                    <input type="number" id="user-captcha" required placeholder="Enter result "><br><br>
+                </div>
+
+
+                <div class="form-group w-100 text-center">
+                    <button type="submit" class="btn btn-success" onclick="return validateMobileNumber() && validatePassword() && validateEmail() && generateCaptcha();">Submit</button>
+                </div>
+            </div>
+            &nbsp;
+        </fieldset>
+    </form>
+</div>
+<script>
+    generateCaptcha();
+    validateEmail();
+    validatePassword();
+    validateMobileNumber();
+    </script>

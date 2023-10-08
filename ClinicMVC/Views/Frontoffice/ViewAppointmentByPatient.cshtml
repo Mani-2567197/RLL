@@ -1,0 +1,116 @@
+﻿
+@using DataProvider;
+@model IEnumerable<Appointment>
+@{
+    ViewBag.Title = "ViewAppointmentByPatient";
+   
+}
+<style>
+
+    .custom-background {
+        background-color: aquamarine;
+        border-radius:10px;
+    }
+    .container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        margin-right: 50%;
+        margin-top: 10px;
+    }
+</style>
+
+<div class="container custom-background">
+    <form method="post">
+        <fieldset>
+            <legend>View Appointments By Patient Name:</legend>
+            <div class="form-row justify-content-center">
+                <div class="form-group row">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Search Appointments</span>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div>
+                            <input type="text" class="form-control" placeholder="Enter Patient Name" id="txtName" name="txtName" aria-label="Name" aria-describedby="basic-addon1" required>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="input-group-append">
+                            <button class="btn btn-warning ml-1" type="submit" style="top:-20%;" id="button-addon2">Search</button>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="input-group-append">
+                            <a class="btn btn-primary ml-1" href="/Frontoffice/ViewAppointmentByPatient" type="button" id="button-addon2">View All Appointments</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*<a href="~/Views/Frontoffice/ViewAppointmentByPatient.cshtml">~/Views/Frontoffice/ViewAppointmentByPatient.cshtml</a>*@
+        </fieldset>
+    </form>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Appointment Id</th>
+                <th scope="col">Patient Name</th>
+                <th scope="col">Doctor Name</th>
+                <th scope="col">Appointemnt Date</th>
+                <th scope="col">Details</th>
+                <th scope="col">Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Appointment item in Model.ToList())
+            {
+                <form action="/Frontoffice/UpdateAppointment/@item.AppointmentId" method="post">
+                <tr class="table-active">
+                    <th scope="row">@item.AppointmentId</th>
+                    <td>@item.User.Name</td>
+                    <td>@item.User1.Name</td>
+                    <td>@item.StartDateTime.ToString("dd-MM-yyyy")</td>
+                    <th>
+                        @if (@item.IsApprove)
+                        {
+                            <textarea class="form-control" id="disabledInput" type="text" disabled="">@item.Details</textarea>
+                        }
+                        else
+                        {
+                            <textarea class="form-control" id="txtDetails" name="txtDetails" maxlength="200" spellcheck="false">@item.Details</textarea>
+                        }
+
+                    </th>
+                    <td>
+                        @if (item.Status == "Queue")
+                        {
+                            <button type="button" class="btn btn-outline-info disabled">@item.Status</button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-outline-danger disabled">@item.Status</button>
+                        }
+
+                    </td>
+                    <td>
+                        @if (item.IsApprove)
+                        {
+
+                        }
+                        else
+                        {
+
+                            <button type="submit" class="btn btn-outline-success">Approve</button>
+
+                        }
+                    </td>
+
+                </tr>
+                </form>
+            }
+
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,77 @@
+﻿@using DataProvider;
+@model IEnumerable<Appointment>
+@{
+    ViewBag.Title = "ViewAppointment";
+   
+}
+<style>
+
+    .custom-background {
+        background-color: aquamarine;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<script type="text/javascript">
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };</script>
+<div class="container custom-background">
+    <form method="post">
+        <fieldset>
+            <legend>View Appointments of Dr. @Session["Name"] :</legend>
+            <div class="form-row justify-content-center">
+                <div class="form-group row">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Search Appointments</span>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="date" class="form-control input-sm" placeholder="Enter Date" id="txtAppDate" name="txtAppDate" aria-label="Date" aria-describedby="basic-addon1" required>
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-success ml-1" type="submit" id="button-addon2">Search</button>
+                        </div>
+                        <div class="input-group-append">
+                            <a class="btn btn-primary ml-1" href="/Doctor/ViewAppointment" type="button" id="button-addon2">View All Appointments</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <table class="table table-hover" style="margin-bottom:10px">
+        <thead>
+            <tr class="bg-dark text-white">
+                <th scope="col">Appointment Id</th>
+                <th scope="col">Patient Name</th>
+                <th scope="col">Appointemnt Date</th>
+                <th scope="col">Details</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody class="bg-light bg-transparent-50">
+            @foreach (Appointment item in Model.ToList())
+            {
+                <tr class="table-active">
+                    <th scope="row">@item.AppointmentId</th>
+                    <td>@item.User.Name</td>
+                    <td>@item.StartDateTime.ToString("dd-MM-yyyy")</td>
+                    <th>@item.Details</th>
+                    <td>
+                        @if (item.Status == "Queue")
+                        {
+                            <button type="button" class="btn btn-outline-success disabled">@item.Status</button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-outline-danger disabled">@item.Status</button>
+                        }
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

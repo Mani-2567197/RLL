@@ -1,0 +1,85 @@
+﻿
+@using DataProvider;
+@model User
+@{
+    ViewBag.Title = "AddPatient";
+
+}
+
+
+<style>
+
+    .custom-background {
+        background-color: aquamarine;
+        border-radius:10px;
+    }
+    .container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        margin-right: 50%;
+        margin-top: 10px;
+    }
+</style>
+<script type="text/javascript">
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };</script>
+
+<div class="container custom-background">
+
+    <form method="post" action="/Frontoffice/AddPatient">
+        <fieldset>
+            <legend>Add Patient:</legend>
+            <div class="form-row justify-content-center">
+                <div class="form-group w-50">
+                    <label for="patientName">Patient Name</label>
+                    @Html.TextBoxFor(app => app.Name, new { type = "text", @class = "form-control", maxlength = "50", placeholder = "Enter Patient Name", required = "required" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientPhone">Patient Phone</label>
+                    @Html.TextBoxFor(app => app.Phone, new { type = "number", @class = "form-control", pattern = "{0-9}[10]", placeholder = "Enter Patient Phone", required = "required" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientDOB">Patient DOB</label>
+                    @Html.TextBoxFor(app => app.DOB, new { type = "date", @class = "form-control", placeholder = "Enter Patient DOB", required = "required" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientAddress">Patient Address</label>
+                    @Html.TextAreaFor(app => app.Address, new { type = "text", @class = "form-control", placeholder = "Enter Appointment Address", required = "required", maxlength = "200", rows = "1" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientEmail">Patient Email</label>
+                    @Html.TextBoxFor(app => app.Email, new { type = "email", @class = "form-control", placeholder = "Enter Patient Email", required = "required" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientPassword">Patient Password</label>
+                    @Html.TextBoxFor(app => app.Password, new { type = "password", @class = "form-control", placeholder = "Enter Patient Password", required = "required" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientGender">Patient Gender</label>
+                    @Html.DropDownListFor(app => app.Gender, new SelectList(new List<Object> {
+                new {  Value="Male" },
+                new {  Value="Female" } }, "Value", "Value"), new { @class = "form-control" })
+                </div>
+                @Html.HiddenFor(usr => usr.IsActive, new { Value = "true" })
+                @Html.HiddenFor(usr => usr.RoleId, new { Value = "3" })
+                <br>
+                <div class="form-group w-50 text-left">
+                    <button type="submit" class="btn btn-success" onclick="return validateMobileNumber() && validatePassword() && validateEmail();">Submit</button>
+                </div>
+            </div>
+            &nbsp;
+        </fieldset>
+    </form>
+</div>
+<script>
+    validateEmail();
+    validateMobileNumber();
+    validatePassword();
+</script>
+
+
+

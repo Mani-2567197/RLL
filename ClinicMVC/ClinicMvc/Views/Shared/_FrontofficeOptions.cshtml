@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "_FrontofficeOptions";
+}
+<div class="collapse navbar-collapse navbar-small" id="navbarColor02">
+
+
+<div class="align-nav">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            @Html.ActionLink("Add Patient", "AddPatient", "Frontoffice", null, new { @class = "nav-link" })
+        </li>
+        <li class="nav-item active">
+            @Html.ActionLink("Book Appointment", "BookAppointment", "Frontoffice", null, new { @class = "nav-link" })
+        </li>
+      
+        <li class="nav-item active">
+            @Html.ActionLink("View Appointment", "ViewAppointment", "Frontoffice", null, new { @class = "nav-link" })
+        </li>
+        <li class="nav-item active">
+            @Html.ActionLink("View Appointment By Patient", "ViewAppointmentByPatient", "Frontoffice", null, new { @class = "nav-link" })
+        </li>
+    </ul>
+    </div>
+    <form action="/Account/Logout" method="post" class="form-inline my-2 my-lg-0">
+        <span class="nav-link text-light"> Hi,Mr./Miss. @Session["Name"],</span>&nbsp;
+        <a class="btn btn-info my-2 my-sm-0" href="/Account/EditUser">Edit Profile</a>
+        <button class="btn btn-secondary ml-1 my-2 my-sm-0" type="submit">LogOut</button>
+    </form>
+</div>
+
+<style>
+    li{
+        color:white;
+    }
+</style>

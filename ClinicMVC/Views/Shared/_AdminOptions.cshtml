@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "_AdminOptions";
+}
+
+<link rel="stylesheet" href="~/css/AdminOption.css" />
+<div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            @Html.ActionLink("View User", "Index", "Admin", null, new { @class = "nav-link" })
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("Add Doctor", "AddDoctor", "Admin", null, new { @class = "nav-link" })
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("Add Front Executive", "AddFrontExecutive", "Admin", null, new { @class = "nav-link" })
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("Add Pharmacist", "AddPharmacist", "Admin", null, new { @class = "nav-link" })
+        </li>
+    </ul>
+
+    <form action="/Account/Logout" method="post" class="form-inline my-2 my-lg-0">
+        <span class="nav-link text-light"> Hi,Admin Mr.@Session["Name"],</span>
+        <a class="btn btn-info my-2 my-sm-0" href="/Account/EditUser">Edit Profile</a>
+        <button class="btn btn-secondary ml-1 my-2 my-sm-0" type="submit">LogOut</button>
+    </form>
+</div>
+
+

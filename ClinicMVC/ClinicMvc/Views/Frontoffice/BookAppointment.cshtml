@@ -1,0 +1,67 @@
+﻿@using DataProvider;
+@model Appointment
+
+@{
+    ViewBag.Title = "BookAppointment";
+
+}
+
+<style>
+
+    .custom-background {
+        background-color: aquamarine;
+        border-radius:10px;
+    }
+    .container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        margin-right: 50%;
+        margin-top: 10px;
+    }
+</style>
+
+<div class="container custom-background">
+    <form method="post" action="/Frontoffice/BookAppointment">
+        <fieldset>
+            <legend>Book Appointment For Patient :</legend>
+            <div class="form-row justify-content-center">
+                <div class="form-group w-50">
+                    <label for="pateintName">Patient Name</label>
+                    @Html.DropDownListFor(app => app.PatientId, new SelectList(ViewBag.Patient, "UserId", "Name"), new { @class = "form-control", required = "required" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="doctorName">Doctor Name</label>
+                    @Html.DropDownListFor(app => app.DoctorId, new SelectList(ViewBag.Doctor, "UserId", "Name"), new { @class = "form-control", required = "required" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="appointmentDate">Appointment Date</label>
+                    @Html.TextBoxFor(app => app.StartDateTime, new { type = "date", @class = "form-control", placeholder = "Select Date", required = "required" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="details">Appointment Details</label>
+                    @Html.TextAreaFor(app => app.Details, new { type = "text", @class = "form-control", placeholder = "Enter Appointment Details", required = "required", maxlength = "200", rows = "1" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="isApproved">Approve</label>
+                    @Html.DropDownListFor(app => app.IsApprove, new SelectList(new List<Object> {
+                new { Id = true, Value="Yes" },
+                new { Id = false, Value="No" } }, "Id", "Value"), new { @class = "form-control" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="status">Status</label>
+                    @Html.DropDownListFor(app => app.Status, new SelectList(new List<Object> {
+                new { Value="Queue" },
+                new { Value="Approved" } }, "Value", "Value"), new { @class = "form-control" })
+                </div>
+                <br>
+                <div class="form-group w-50 text-left">
+                    <button type="submit" class="btn btn-success" >Submit</button>
+                </div>
+            </div>
+            &nbsp;
+        </fieldset>
+    </form>
+</div>

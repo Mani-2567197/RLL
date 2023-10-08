@@ -1,0 +1,65 @@
+﻿@using DataProvider;
+@model IEnumerable<Appointment>
+@{
+    ViewBag.Title = "ViewAppointment";
+    
+}
+<div class="container" style="padding: 20px 20px 20px 20px; background-color:aquamarine;">
+    <form method="post">
+        <fieldset>
+            <legend>View Appointments of @Session["Name"]</legend>
+            <div class="form-row justify-content-center">
+                <div class="form-group row">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Search Appointments</span>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="date" class="form-control input-sm" placeholder="Enter Date" id="txtappdate" name="txtappdate" aria-label="Date" aria-describedby="basic-addon1" required>
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-success ml-1" type="submit" id="button-addon2">Search</button>
+                        </div>
+                        <div class="input-group-append">
+                            <a class="btn btn-primary ml-1" href="/Patient/ViewAppointment" type="button" id="button-addon2">View All Appointments</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <table class="table table-hover bg-light bg-opacity-50">
+        <thead class="text-white">
+            <tr class="bg-dark">
+                <th scope="col">Appointment Id</th>
+                <th scope="col">Doctor Name</th>
+                <th scope="col">Appointemnt Date</th>
+                <th scope="col">Details</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Appointment item in Model.ToList())
+            {
+                <tr class="table-active">
+                    <th scope="row">@item.AppointmentId</th>
+                    <td>@item.User1.Name</td>
+                    <td>@item.StartDateTime.ToString("dd-MM-yyyy")</td>
+                    <th>@item.Details</th>
+                    <td>
+                        @if (item.Status == "Queue")
+                        {
+                            <button type="button" class="btn btn-outline-success disabled">@item.Status</button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-outline-danger disabled">@item.Status</button>
+                        }
+
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

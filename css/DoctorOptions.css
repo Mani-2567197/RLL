@@ -1,0 +1,35 @@
+﻿
+. custom-container {
+    background-color: aquamarine;
+}
+
+.navbar {
+    background-color: #17a2b8;
+}
+
+.navbar-nav {
+    margin-right: auto;
+}
+
+.nav-item {
+    margin-right: 15px;
+}
+
+.nav-link {
+    color: white;
+}
+
+.user-info {
+    color: white;
+    margin-right: 15px;
+}
+
+.btn-profile {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btn-logout {
+    background-color: #dc3545;
+    color: white;
+}

@@ -1,0 +1,113 @@
+﻿/*body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}*/
+
+.avatar {
+    width: 50px;
+    height: 40px;
+    background-position:center;
+    position:absolute;
+    margin:0px;
+    top:-14%;
+}
+form{
+    position:absolute;
+
+}
+.log {
+    width: 1165px;
+    height:650px;
+    background-position: center;
+    margin-left:0px;
+    background-color: aquamarine;
+}
+h1 {
+    margin-right:0px;
+    padding: 0 0 10px;
+    text-align: center;
+    font-size: 30px;
+    font-family: AR JULIAN;
+    color: aqua;
+}
+center{
+    position:absolute;
+    margin-left:90px;
+    margin-top:15px;
+    
+}
+.loginbox {
+    width: 320px;
+    height: 450px;
+    background: #000;
+    color: #fff;
+    top: 20%;
+    left: 36%;
+    position: absolute;
+    box-sizing: border-box;
+    padding: 50px 45px;
+    opacity: .7;
+}
+
+    .loginbox p {
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+    }
+
+    .loginbox input {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+        .loginbox input[type="email"], input[type="password"] {
+            border: none;
+            border-bottom: 1px solid #fff;
+            background: transparent;
+            outline: none;
+            height: 40px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .loginbox input[type="submit"] {
+            border: none;
+            outline: none;
+            height: 40px;
+            background: #fb2525;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 20px;
+        }
+
+            .loginbox input[type="submit"]:hover {
+                cursor: pointer;
+                background: #ffc107;
+                color: #000;
+            }
+
+    .loginbox a {
+        text-decoration: none;
+        font-size: 12px;
+        line-height: 20px;
+        color: darkgrey;
+    }
+
+        .loginbox a:hover {
+            color: #ffc107;
+        }
+
+.active {
+    color: #fff;
+    background: #e02626;
+    border-radius: 10px;
+}
+center{
+    margin-left:40px;
+}
+button{
+    margin:auto;
+}
+
+

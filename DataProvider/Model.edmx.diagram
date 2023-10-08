@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fc50745dadcc4eeabac09f06c36b55fd" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="ClinicalDbModel.Appointment" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicalDbModel.Doctor" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicalDbModel.Medicine" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicalDbModel.Message" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicalDbModel.Role" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicalDbModel.Specialization" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicalDbModel.User" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="ClinicalDbModel.FK_160" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicalDbModel.FK_169" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicalDbModel.FK_128" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicalDbModel.FK_27" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicalDbModel.FK_163" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicalDbModel.FK_166" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicalDbModel.FK_153" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

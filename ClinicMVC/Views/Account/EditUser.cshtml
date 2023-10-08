@@ -1,0 +1,66 @@
+﻿@model DataProvider.User
+
+@{
+    ViewBag.Title = "EditUser";
+}
+
+<style>
+    .custom-background{
+        background-color:aquamarine;
+        border-radius:10px;
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+    button{
+        margin-right:50%;
+        margin-top:5px;
+
+    }
+    label{
+        font-weight:bold;
+    }
+</style>
+<div class="container custom-background">
+    <form method="post" action="/Account/EditUser">
+        <fieldset>
+            <legend>Edit User (@Model.UserId):</legend>
+            @Html.HiddenFor(usr => usr.UserId)
+            <div class="form-row justify-content-center">
+                <div class="form-group  w-50">
+                    <label for="exampleInput">Name</label>
+                    <input type="text" readonly="" class="form-control-plaintext" value="@Model.Name">
+                </div>
+                <div class="form-group w-50">
+                    <label for="exampleInputPhone">Phone</label>
+                    @Html.TextBoxFor(usr => usr.Phone, new { type = "text", @class = "form-control", placeholder = "Enter New Phone" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="exampleInputAddress">Address</label>
+                    @Html.TextBoxFor(usr => usr.Address, new { type = "text", @class = "form-control", placeholder = "Enter New Address" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="exampleInputEmail">Email</label>
+                    @Html.TextBoxFor(usr => usr.Email, new { type = "text", @class = "form-control", placeholder = "Enter New Email" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="exampleInputPassword">Password</label>
+                    @Html.TextBoxFor(usr => usr.Password, new { type = "text", @class = "form-control", placeholder = "Enter New Password" })
+                </div>
+
+                <div class="form-group w-100 text-center">
+                    <button type="submit" class="btn btn-primary text-center">Submit</button>
+                </div>
+                @if (ViewBag.Edit)
+                {
+                    <div class="alert alert-dismissible alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Well done!</strong> You successfully updated your details
+                    </div>
+                }
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+
+

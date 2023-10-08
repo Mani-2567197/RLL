@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -DataProvider</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        footer {
+            background-color: #353839;
+            color: white;
+        }
+        #back {
+            background-color: #007f5c;
+        }
+        .logo{
+            height:60px;
+            width:80px;
+            margin-left:20px;
+            margin-right:20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark text-white-50" id="back">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+            <img src="~/images/o.png" class="logo" />
+            <a class="navbar-brand" href="#">Clinical Automation System</a>
+            @{
+                int roleid = 0;
+                if (Session["RoleId"] != null)
+                {
+                    roleid = (int)Session["RoleId"];
+                }
+            }
+
+            @if (roleid == 1)
+            {
+                @Html.Partial("_AdminOptions")
+            }
+            else if (roleid == 2)
+            {
+                @Html.Partial("_DoctorOptions")
+            }
+            else if (roleid == 3)
+            {
+                @Html.Partial("PatientOptions")
+            }
+            else if (roleid == 4)
+            {
+                @Html.Partial("_FrontofficeOptions")
+            }
+            else if (roleid == 5)
+            {
+                @Html.Partial("_PharmacyOptions")
+            }
+        </nav>
+        <section>
+            <div class="container">
+                @RenderBody()
+            </div>
+        </section>
+        <footer id="footer">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-6 col-lg">
+                        <div class="ftco-footer-widget py-4 py-md-5">
+                            <h2 class="logo">RLL <span style="font-family: 'Arial', sans-serif;">Clinic</span></h2>
+                            <p>Nestled amidst breathtaking mountain vistas, clinic emerges as an oasis of healing, where the art of wellness meets the beauty of nature, and the written word comes to life.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg">
+                        <div class="ftco-footer-widget ml-md-5 py-5">
+                            <h2 class="ftco-heading-2" style="font-family: 'Arial', sans-serif;">Services</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Accident & Emergency unit</a></li>
+                                <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Experienced Doctors</a></li>
+                                <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Consult with Specialists</a></li>
+                                <!-- Add more services here -->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg">
+                        <div class="ftco-footer-widget py-4 py-md-5">
+                            <h2 class="ftco-heading-2">Contact&nbsp;<span style="font-family: 'Arial', sans-serif;">Information</span></h2>
+                            <div class="block-23 mb-3">
+                                <ul style="list-style: none; padding-left: 0;">
+                                    <li><span class="icon fa fa-map-marker text-white"></span><span class="text"> RLL Clinic hospital, New St, Pune, India</span></li>
+                                    <li><a href="#"><span class="icon fa fa-phone"></span><span class="text"> +91 413 225 5566</span></a></li>
+                                    <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text"> clinic@rll.com</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="ftco-footer-widget custom-bg-color p-4 py-5">
+                            <h2 class="ftco-heading-2">Business&nbsp;<span style="font-family: 'Arial', sans-serif;">Hours</span></h2>
+                            <div class="opening-hours">
+                                <h4>Opening Days:</h4>
+                                <p class="pl-3">
+                                    <span>Monday to Friday: 9am to 8pm</span>
+                                    <span>Saturday: 9am to 6pm</span>
+                                </p>
+                                <h4>Vacations:</h4>
+                                <p class="pl-3">
+                                    <span>All Sunday Days</span>
+                                    <span>All Official Holidays</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p>
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved
+                        </p>
+                        <div class="row">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @RenderSection("scripts", required: false)
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+﻿@using DataProvider;
+@model User
+
+@{
+    ViewBag.Title = "AddFrontExecutive";
+   
+}
+
+<link rel="stylesheet" href="~/css/AdminAddFrontExecutive.css" />
+
+
+<div class="container">
+    <form method="post" action="/Admin/AddFrontExecutive">
+        <fieldset>
+            <legend>Add FrontExecutive:</legend>
+            <div class="form-row justify-content-center">
+                <div class="form-group w-50">
+                    <label for="patientName">FrontExecutive Name</label>
+                    @Html.TextBoxFor(app => app.Name, new { type = "text", @class = "form-control", maxlength = "50", placeholder = "Enter FrontExecutive Name", required = "required" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientPhone">FrontExecutive Phone</label>
+                    @Html.TextBoxFor(app => app.Phone, new { type = "number", @class = "form-control", pattern = "{0-9}[10]", placeholder = "Enter FrontExecutive Phone", required = "required" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientDOB">FrontExecutive DOB</label>
+                    @Html.TextBoxFor(app => app.DOB, new { type = "date", @class = "form-control", placeholder = "Enter FrontExecutive DOB", required = "required" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientAddress">FrontExecutive Address</label>
+                    @Html.TextAreaFor(app => app.Address, new { type = "text", @class = "form-control", placeholder = "Enter Appointment Address", required = "required", maxlength = "200", rows = "1" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientEmail">FrontExecutive Email</label>
+                    @Html.TextBoxFor(app => app.Email, new { type = "email", @class = "form-control", placeholder = "Enter FrontExecutive Email", required = "required" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientPassword">FrontExecutive Password</label>
+                    @Html.TextBoxFor(app => app.Password, new { type = "password", @class = "form-control", placeholder = "Enter FrontExecutive Password", required = "required" })
+                </div>
+                <div class="form-group w-50">
+                    <label for="patientGender">FrontExecutive Gender</label>
+                    @Html.DropDownListFor(app => app.Gender, new SelectList(new List<Object> {
+                new {  Value="Male" },
+                new {  Value="Female" },
+                new {  Value="Male" },}, "Value", "Value","Value"), new { @class = "form-control" })
+                </div>
+                @Html.HiddenFor(usr => usr.IsActive, new { Value = "true" })
+                @Html.HiddenFor(usr => usr.RoleId, new { Value = "4" })
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success" onclick="return validateMobileNumber() && validatePassword() && validateEmail();">Submit</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<script>
+    validateEmail();
+    validateMobileNumber();
+    validatePassword();
+</script>

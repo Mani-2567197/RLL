@@ -1,0 +1,103 @@
+﻿@using DataProvider;
+@model IEnumerable<Message>
+
+@{
+    ViewBag.Title = "Message";
+   
+}
+<link href="~/css/Message.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet" />
+    <div class="container">
+       
+        <h4 class=" text-center">Messaging  @ViewBag.DoctorName</h4>
+        <div class="messaging">
+            <div class="inbox_msg">
+                <div class="inbox_people">
+                    <div class="headind_srch">
+                        <div class="recent_heading">
+                            <h4>List Of Approved Appointments</h4>
+                        </div>
+                    </div>
+                    <div class="inbox_chat">
+                        @foreach (Appointment item in ViewBag.Appointments)
+                        {
+
+                            <div class="chat_list active_chat">
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_ib">
+                                        <h5>Dr. @item.User1.Name <span class="chat_date">@item.StartDateTime.ToString("dddd , dd-MM-yyyy")</span></h5>
+                                        <form action="/Patient/Message/@item.DoctorId" method="post">
+                                            <button type="submit" class="btn btn-outline-secondary">View Message</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+                <div class="mesgs">
+
+                    <div class="msg_history">
+                        @if (Model != null)
+                        {
+                            foreach (Message item in Model.ToList())
+                            {
+
+                                if (item.RecieverId == (int)Session["UserId"])
+                                {
+                                    <div class="incoming_msg">
+                                        <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                        <div class="received_msg">
+                                            <div class="received_withd_msg">
+                                                <span>@item.User1.Name</span>
+                                                <p>
+                                                    @item.Message1
+                                                </p>
+                                                <span class="time_date"> @item.MessageTime</span>
+                                                <span class="time_date"> @item.Status</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                    if (item.SenderId == (int)Session["UserId"])
+                                {
+                                    <div class="outgoing_msg">
+                                        <div class="sent_msg">
+                                            <p>
+                                                @item.Message1
+                                            </p>
+                                            <span class="time_date"> @item.MessageTime</span>
+                                            <span class="time_date"> @item.Status</span>
+                                        </div>
+                                    </div>
+                                }
+
+
+                            }
+                        }
+                    </div>
+                    <div class="type_msg">
+                        <div class="input_msg_write text-dark">
+                            <form action="/Patient/AddMessage/@ViewBag.DoctorId" method="post">
+
+                                <input type="text" class="write_msg" id="txtMessage" name="txtMessage" maxlength="200" placeholder="Type a message" required />
+                                @if (Model == null)
+                                {
+                                    <button class="msg_send_btn" type="submit" disabled><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                                }
+                                else
+                                {
+                                    <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                                }
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

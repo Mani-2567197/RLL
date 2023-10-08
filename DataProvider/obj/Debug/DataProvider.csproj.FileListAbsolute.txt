@@ -1,0 +1,12 @@
+E:\RLL\RLL Clinic\DataProvider\bin\Debug\DataProvider.dll.config
+E:\RLL\RLL Clinic\DataProvider\bin\Debug\DataProvider.dll
+E:\RLL\RLL Clinic\DataProvider\bin\Debug\DataProvider.pdb
+E:\RLL\RLL Clinic\DataProvider\bin\Debug\EntityFramework.dll
+E:\RLL\RLL Clinic\DataProvider\bin\Debug\EntityFramework.SqlServer.dll
+E:\RLL\RLL Clinic\DataProvider\bin\Debug\EntityFramework.xml
+E:\RLL\RLL Clinic\DataProvider\bin\Debug\EntityFramework.SqlServer.xml
+E:\RLL\RLL Clinic\DataProvider\obj\Debug\DataProvider.csproj.AssemblyReference.cache
+E:\RLL\RLL Clinic\DataProvider\obj\Debug\DataProvider.csproj.CoreCompileInputs.cache
+E:\RLL\RLL Clinic\DataProvider\obj\Debug\DataProvider.csproj.CopyComplete
+E:\RLL\RLL Clinic\DataProvider\obj\Debug\DataProvider.dll
+E:\RLL\RLL Clinic\DataProvider\obj\Debug\DataProvider.pdb

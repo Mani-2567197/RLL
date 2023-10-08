@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "w57Yj4gPrdK9wCd+F09eKgg8EcZTHuNWMWhoFDRhFzKgEnp6E0hqKvnxTRHPsCtI1LCMnPuJJrDiqMuaZesKhw==",
+  "success": true,
+  "projectFilePath": "E:\\RLL\\RLL Clinic\\API\\API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\MANIKANTA\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.4\\microsoft.visualstudio.azure.containers.tools.targets.1.19.4.nupkg.sha512"
+  ],
+  "logs": []
+}

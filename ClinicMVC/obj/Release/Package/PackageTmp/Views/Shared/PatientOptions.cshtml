@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "PatientOptions";
+}
+<div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            @Html.ActionLink("Search Doctor", "Index", "Patient", null, new { @class = "nav-link" })
+        </li>
+        <li class="nav-item active">
+            @Html.ActionLink("View Appointment", "ViewAppointment", "Patient", null, new { @class = "nav-link" })
+        </li>
+        <li class="nav-item active">
+            @Html.ActionLink("Messaging", "Message", "Patient", null, new { @class = "nav-link" })
+        </li>
+        <li class="nav-item active">
+            @Html.ActionLink("View Medicines", "ViewMedicines", "Patient", null, new { @class = "nav-link" })
+        </li>
+    </ul>
+
+    <form action="/Account/Logout" method="post" class="form-inline my-2 my-lg-0">
+        <span class="nav-link text-light"> Hi,Mr./Miss. @Session["Name"],</span>
+        <a class="btn btn-info my-2 my-sm-0" href="/Account/EditUser">Edit Profile</a>
+        <button class="btn btn-secondary ml-1 my-2 my-sm-0" type="submit">LogOut</button>
+    </form>
+</div>

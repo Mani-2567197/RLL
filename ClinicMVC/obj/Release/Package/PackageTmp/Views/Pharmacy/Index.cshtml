@@ -1,0 +1,84 @@
+﻿@using DataProvider;
+@model IEnumerable<Medicine>
+@{
+    ViewBag.Title = "Index";
+    
+}
+
+<style>
+
+    .custom-background {
+        background-color: aquamarine;
+        border-radius: 5px;
+        padding: 20px;
+    }
+    .container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<script type="text/javascript">function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };</script>
+<div class="container custom-background">
+    <form method="post">
+        <fieldset>
+            <legend>View Medicine for Pharmacy</legend>
+            <div class="form-group row">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Search Medicine</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Enter Medicine Name" id="textMediName" name="textMediName" aria-label="Medicine" aria-describedby="basic-addon1" required>
+                    <div class="input-group-append">
+                        <button class="btn btn-success ml-1" type="submit" id="button-addon2">Search</button>
+                    </div>
+                    <div class="input-group-append">
+                        <a class="btn btn-primary ml-1" href="/Pharmacy/Index" type="button" id="button-addon2">View All Medicine</a>
+                    </div>
+                    <div class="input-group-append">
+                        <a class="btn btn-info ml-1" href="/Pharmacy/Create" type="button" id="button-addon2">Add Medicine</a>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Medicine ID</th>
+                <th scope="col">Medicine Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Tax</th>
+                <th scope="col">IsAvailable</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Medicine item in Model.ToList())
+            {
+                <tr class="table-secondary">
+                    <th scope="row">@item.MedicineId</th>
+                    <td>@item.Name</td>
+                    <td>₹ @item.Price</td>
+                    <td>@item.Stock</td>
+                    <td>@item.Tax %</td>
+                    <td>@(item.IsAvailable)</td>
+                    <td>
+                        <a href="/Pharmacy/Edit/@item.MedicineId" class="btn btn-outline-warning">Edit</a>
+                    </td>
+                    <td>
+                        <form action="/Pharmacy/Delete/@item.MedicineId" method="post">
+                            <button type="submit" class="btn btn-outline-success">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
