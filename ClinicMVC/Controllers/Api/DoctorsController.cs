@@ -7,7 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace ClinicMVC.Controllers.Api
+namespace API.Controllers
 {
     public class DoctorsController : ApiController
     {

@@ -121,16 +121,27 @@ namespace DataProvider
                 Where(u => u.Email == email && u.Password == password).FirstOrDefault();
             return user;
         }
-
-        public User LoginUsingEmailAndPhone(string email, string phone)
+        public User ChangePassword(string email, string newpassword, string confirmpassword)
         {
 
-            User user = context.Users
-           .Include("Role")
-           .OrderBy(u => u.UserId).
-           Where(u => u.Email == email).FirstOrDefault();
+            User user = null;
+            if (user != null)
+            {
+                user = context.Users
+                  .Include("Role")
+               .OrderBy(u => u.UserId).
+               Where(u => u.Email == email).FirstOrDefault();
+                if (newpassword == confirmpassword)
+                {
+                    user.Password = newpassword;
+                    context.SaveChanges();
+                }
+            }
+            else
+            {
+                user = null;
+            }
             return user;
-
         }
     }
 }

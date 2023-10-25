@@ -21,5 +21,7 @@ namespace ClinicMVC.Models
         public string Password { get; set; }
         public bool IsActive { get; set; }
         public int RoleId { get; set; }
+        public string newpassword { get; set; }
+        public string confirmnewpassword { get; set; }
     }
 }

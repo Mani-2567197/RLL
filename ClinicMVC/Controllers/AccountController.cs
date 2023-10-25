@@ -198,78 +198,80 @@ namespace ClinicMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult ForgetPassword(string inputEmail, string inputPassword, string inputconfirmPassword)
+        public ActionResult ChangePassword(string inputEmail, string inputPassword, string inputconfirmPassword)
         {
-            //if (inputPassword==inputconfirmPassword)
-            //{
+            User usr = null;
 
-            //}
-            //else {
-            //    return View();
-            //}
-            User usr = user.LoginUsingEmailAndPhone(inputEmail, inputPassword);
-            if (usr == null)
+            if (inputPassword == inputconfirmPassword)
             {
-                Session["Invalid"] = true;
-                return View();
-            }
-            else
-            {
-                Session["UserId"] = usr.UserId;
-                Session["Name"] = usr.Name;
-                Session["RoleId"] = usr.RoleId;
-                //'Administrator'
-                if (usr.RoleId == 1)
+                if (usr == null)
                 {
-                    return RedirectToRoute(new
-                    {
-                        controller = "Account",
-                        action = "Login",
-                    });
-                }
-                //'Doctor'
-                else if (usr.RoleId == 2)
-                {
-                    return RedirectToRoute(new
-                    {
-                        controller = "Account",
-                        action = "EditUser",
-                    });
-                }
-                //'Patient'
-                else if (usr.RoleId == 3)
-                {
-                    return RedirectToRoute(new
-                    {
-                        controller = "Account",
-                        action = "EditUser",
-                    });
-                }
-
-                //'Fontoffice'
-                else if (usr.RoleId == 4)
-                {
-                    return RedirectToRoute(new
-                    {
-                        controller = "Account",
-                        action = "EditUser",
-                    });
-                }
-
-                //'Pharmacy'
-                else if (usr.RoleId == 5)
-                {
-                    return RedirectToRoute(new
-                    {
-                        controller = "Account",
-                        action = "EditUser",
-                    });
-
+                    Session["Invalid"] = true;
+                    return View();
                 }
                 else
                 {
-                    return View();
+                    Session["UserId"] = usr.UserId;
+                    Session["Name"] = usr.Name;
+                    Session["RoleId"] = usr.RoleId;
+                    //'Administrator'
+                    if (usr.RoleId == 1)
+                    {
+                        return RedirectToRoute(new
+                        {
+                            controller = "Admin",
+                            action = "Index",
+                        });
+                    }
+                    //'Doctor'
+                    else if (usr.RoleId == 2)
+                    {
+                        return RedirectToRoute(new
+                        {
+                            controller = "Doctor",
+                            action = "Index",
+                        });
+                    }
+                    //'Patient'
+                    else if (usr.RoleId == 3)
+                    {
+                        return RedirectToRoute(new
+                        {
+                            controller = "Patient",
+                            action = "Index",
+                        });
+                    }
+
+                    //'Frontoffice'
+                    else if (usr.RoleId == 4)
+                    {
+                        return RedirectToRoute(new
+                        {
+                            controller = "Frontoffice",
+                            action = "Index",
+                        });
+                    }
+
+                    //'Pharmacy'
+                    else if (usr.RoleId == 5)
+                    {
+                        return RedirectToRoute(new
+                        {
+                            controller = "Pharmacy",
+                            action = "Index",
+                        });
+
+                    }
+                    else
+                    {
+                        return View();
+                    }
                 }
+               
+            }
+            else
+            {
+                return View();
             }
         }
     }

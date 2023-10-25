@@ -10,13 +10,13 @@ Name nvarchar(50) not null)
 create table Users
 (
 UserId int identity(1,1) Not null,
-Name nvarchar(50)  NOT NULL,
-Phone nvarchar(11)  NOT NULL,
-Address nvarchar(50)  NOT NULL,
+Name varchar(50)  NOT NULL,
+Phone varchar(11)  NOT NULL,
+Address varchar(50)  NOT NULL,
 DOB datetime  NOT NULL,
-Gender nvarchar(5)  NOT NULL,
-Email nvarchar(50)  NOT NULL,
-Password varchar(12)  NOT NULL,
+Gender varchar(10)  NOT NULL,
+Email varchar(50)  NOT NULL,
+Password varchar(128)  NOT NULL,
 IsActive bit  NOT NULL,
 RoleId int  NOT NULL)
 
